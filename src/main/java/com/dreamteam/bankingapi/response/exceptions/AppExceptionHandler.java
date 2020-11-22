@@ -1,0 +1,24 @@
+package com.dreamteam.bankingapi.response.exceptions;
+
+import com.dreamteam.bankingapi.response.PlainResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+@ControllerAdvice
+public class AppExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(value = NotFound.class)
+    public ResponseEntity<?> handleNotFoundException(NotFound exception){
+        PlainResponse plainResponse = new PlainResponse(exception.getCode(), exception.getErrorMessage());
+
+        Logger logger = LoggerFactory.getLogger(AppExceptionHandler.class);
+        logger.error(exception.getErrorMessage());
+        return new ResponseEntity<>(plainResponse, HttpStatus.NOT_FOUND);
+    }
+
+}
