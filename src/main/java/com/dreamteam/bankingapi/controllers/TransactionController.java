@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.ServletResponseMethodArgumentResolver;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://wutang-bank.herokuapp.com")
 @RestController
 public class TransactionController {
 

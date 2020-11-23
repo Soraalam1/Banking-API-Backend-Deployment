@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin
+@CrossOrigin(origins = "http://wutang-bank.herokuapp.com")
 @RestController
 public class CustomerController {
     @Autowired
